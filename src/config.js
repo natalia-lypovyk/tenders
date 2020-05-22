@@ -1,4 +1,4 @@
-import { baseUrl } from './constants';
+export const baseUrl = 'https://public.mtender.gov.md/tenders';
 
 export const getTenders = async () => {
   const response = await fetch(baseUrl);

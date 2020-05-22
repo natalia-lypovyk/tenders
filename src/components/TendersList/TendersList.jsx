@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Flex from 'ustudio-ui/components/Flex';
 
 import { TenderItem } from '../TenderItem';
-import { baseUrl } from '../../constants';
-import { getTender } from '../../api';
+import { baseUrl } from '../../config';
+import { getTender } from '../../config';
 
 export const TendersList = ({ tenders }) => {
   const [info, setInfo] = useState([]);
