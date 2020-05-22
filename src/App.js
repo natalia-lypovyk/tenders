@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { Flex, Text } from 'ustudio-ui';
 
-function App() {
+import { getTenders } from './api';
+import { TendersList } from './components/TendersList';
+
+export const App = () => {
+  const [tenders, setTenders] = useState([]);
+
+  useEffect(() => {
+    async function loadTenders() {
+      const { data } = await getTenders();
+
+      setTenders(data);      
+    }
+
+    loadTenders();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Flex
+      alignment={{
+        horizontal: 'center',
+        vertical: 'center',
+      }}
+      direction="column"
+    >
+      <Text color="var(--c-primary)" variant="h1">Tenders</Text>
+      {(tenders.length) && <TendersList tenders={tenders} />}
+    </Flex>
   );
-}
-
-export default App;
+};
