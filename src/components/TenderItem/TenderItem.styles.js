@@ -12,7 +12,7 @@ const Card = styled.div`
   transition: box-shadow 0.4s linear;
 
   &:hover {
-    box-shadow: 5px 5px 7px 3px rgba(64,113,140,0.52);
+    box-shadow: 5px 5px 7px 3px var(--c-neutral);
   }
 `;
 
