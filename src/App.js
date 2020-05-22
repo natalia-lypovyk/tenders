@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Flex, Text } from 'ustudio-ui';
+import Flex from 'ustudio-ui/components/Flex';
+import Text from 'ustudio-ui/components/Text';
 
 import { getTenders } from './api';
 import { TendersList } from './components/TendersList';
@@ -8,13 +9,11 @@ export const App = () => {
   const [tenders, setTenders] = useState([]);
 
   useEffect(() => {
-    async function loadTenders() {
+    (async function loadTenders() {
       const { data } = await getTenders();
 
-      setTenders(data);      
-    }
-
-    loadTenders();
+      setTenders(data);
+    })()
   }, []);
 
   return (
@@ -26,7 +25,14 @@ export const App = () => {
       direction="column"
     >
       <Text color="var(--c-primary)" variant="h1">Tenders</Text>
-      {(tenders.length) && <TendersList tenders={tenders} />}
+
+      {
+        (tenders.length) ? (
+          <TendersList tenders={tenders} />
+        ) : (
+            <Text>No tenders here yet</Text>
+          )
+      }
     </Flex>
   );
 };

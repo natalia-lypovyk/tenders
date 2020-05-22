@@ -1,13 +1,13 @@
-import { BASE_URL } from './constants';
+import { baseUrl } from './constants';
 
-export const getTenders = async() => {
-  const response = await fetch(BASE_URL);
+export const getTenders = async () => {
+  const response = await fetch(baseUrl);
 
   return response.json();
 };
 
-export const getTender = async(query) => {
-  const res = await fetch(query);
+export const getTender = async (query) => {
+  const response = await fetch(query);
 
-  return res.json();
+  return response.json();
 };

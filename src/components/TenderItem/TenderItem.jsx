@@ -1,17 +1,12 @@
 import React from 'react';
-import { Text, Flex } from 'ustudio-ui';
-import { 
-  StyledCard, 
-  StyledDiv, 
-  StyledText, 
-  StyledTitle
-} from './TenderItem.styles';
+import Flex from 'ustudio-ui/components/Flex';
+import Text from 'ustudio-ui/components/Text';
+import Styled from './TenderItem.styles';
 
 export const TenderItem = ({ item }) => {
-  const tenderInfo = item.records[0].compiledRelease.tender;
-  const title = tenderInfo?.title;
-  const description = tenderInfo?.description;
-  const budgetAmount = `${tenderInfo.value?.amount} ${tenderInfo.value?.currency}` || 'Budget is not defined';
+  const { tender } = item.records[0].compiledRelease;
+  const { title, description } = tender;
+  const budgetAmount = `${tender.value?.amount} ${tender.value?.currency}` || 'Budget is not defined';
 
   const period = item.records[0].compiledRelease.planning?.budget.budgetBreakdown[0].period;
   const startDate = period?.startDate;
@@ -21,17 +16,17 @@ export const TenderItem = ({ item }) => {
 
   return (
     <li>
-      <StyledCard>
-        <StyledTitle>{title}</StyledTitle>
+      <Styled.Card>
+        <Styled.Title>{title}</Styled.Title>
         <Flex alignment={{
           horizontal: 'space-between'
         }}>
-          <StyledDiv>
-            <StyledText>{source}</StyledText>
+          <Styled.Block>
+            <Styled.Text>{source}</Styled.Text>
             <Text>Description: {description}</Text>
-          </StyledDiv>
+          </Styled.Block>
 
-          <StyledDiv>
+          <Styled.Block>
             <Text>
               Budget: {budgetAmount}
             </Text>
@@ -43,12 +38,9 @@ export const TenderItem = ({ item }) => {
             <Text>
               End Date: {endDate}
             </Text>
-          </StyledDiv>
+          </Styled.Block>
         </Flex>
-
-
-      </StyledCard>
+      </Styled.Card>
     </li>
   );
 };
-

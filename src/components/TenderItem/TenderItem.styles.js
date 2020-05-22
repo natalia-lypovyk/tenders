@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
-export const StyledCard = styled.div`
+const Card = styled.div`
   width: 60%;
-  border: 2px solid #a5d5ff;
-  border-radius: 10px;
   padding: 20px;
   margin: 20px auto;  
+
+  border: 2px solid #a5d5ff;
+  border-radius: 10px;
+  
   transition: box-shadow 0.4s linear;
 
   &:hover {
@@ -13,15 +15,17 @@ export const StyledCard = styled.div`
   }
 `;
 
-export const StyledTitle = styled.h4`
+const Title = styled.h4`
   color: var(--c-primary);
   margin-bottom: 10px;
 `;
 
-export const StyledText = styled.p`
+const Text = styled.p`
   margin-bottom: 7px;
 `;
 
-export const StyledDiv = styled.div`
+const Block = styled.div`
   min-width: 40%;
 `;
+
+export default { Card, Text, Title, Block };

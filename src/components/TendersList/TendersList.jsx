@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Flex } from 'ustudio-ui';
+import Flex from 'ustudio-ui/components/Flex';
 
 import { TenderItem } from '../TenderItem';
-import { BASE_URL } from '../../constants';
+import { baseUrl } from '../../constants';
 import { getTender } from '../../api';
 
 export const TendersList = ({ tenders }) => {
@@ -10,21 +10,19 @@ export const TendersList = ({ tenders }) => {
 
   useEffect(() => {
     const loadPath = () => {
-      const list = tenders.map(item => {
-        const path = `${BASE_URL}/${item.ocid}`;
-        return path;
+      const list = tenders.map(item => {        
+        return `${baseUrl}/${item.ocid}`;
       });
 
       return list;
     }
 
-    const pathes = loadPath();
+    const paths = loadPath();
     
-    const loadData = async () => {
+    const loadData = () => {
       Promise
-        .all(pathes.map(url => getTender(url)))
-        .then(res => setInfo(res)
-        );
+        .all(paths.map(url => getTender(url)))
+        .then(setInfo);
     }
     loadData();
 
@@ -33,10 +31,11 @@ export const TendersList = ({ tenders }) => {
   return (
     <ul>
       <Flex direction='column'>
-        {info.map(item => (
-          <TenderItem key={item.uri} item={item} />
-        ))
-        }
+        {info.map(item => {
+          return (
+            <TenderItem key={item.uri} item={item} />
+          )
+        })}
       </Flex>
     </ul>
   );
