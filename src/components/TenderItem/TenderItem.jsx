@@ -19,12 +19,12 @@ export const TenderItem = ({ item }) => {
   return (
     <li>
       <Styled.Card>
-        <Styled.Title>{title}</Styled.Title>
+        <Styled.Title variant="h4">{title}</Styled.Title>
         <Flex alignment={{
           horizontal: 'space-between'
         }}>
           <Styled.Block>
-            <Styled.Text>{source}</Styled.Text>
+            <Styled.CardText>{source}</Styled.CardText>
             <Text>Description: {description}</Text>
           </Styled.Block>
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Text from 'ustudio-ui/components/Text';
 
 const Card = styled.div`
   width: 60%;
@@ -15,12 +16,12 @@ const Card = styled.div`
   }
 `;
 
-const Title = styled.h4`
+const Title = styled(Text)`
   color: var(--c-primary);
   margin-bottom: 10px;
 `;
 
-const Text = styled.p`
+const CardText = styled(Text)`
   margin-bottom: 7px;
 `;
 
@@ -28,4 +29,4 @@ const Block = styled.div`
   min-width: 40%;
 `;
 
-export default { Card, Text, Title, Block };
+export default { Card, CardText, Title, Block };
