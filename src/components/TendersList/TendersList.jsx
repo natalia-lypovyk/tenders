@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Flex from 'ustudio-ui/components/Flex';
 
+import { baseUrl, getTender } from '../../config';
+
 import { TenderItem } from '../TenderItem';
-import { baseUrl } from '../../config';
-import { getTender } from '../../config';
 
 export const TendersList = ({ tenders }) => {
-  const [info, setInfo] = useState([]);
+  const [tenderInfo, setTenderInfo] = useState([]);
 
   useEffect(() => {
     const loadPath = () => {
@@ -18,22 +18,26 @@ export const TendersList = ({ tenders }) => {
     }
 
     const paths = loadPath();
-    
-    const loadData = () => {
-      Promise
-        .all(paths.map(url => getTender(url)))
-        .then(setInfo);
-    }
-    loadData();
 
+    async function loadData () {
+      for (const path of paths) {
+        const tenderInfo = await getTender(path);
+        setTenderInfo((prev) => [...prev, tenderInfo]);
+      }      
+    }
+    
+    loadData();
   }, []);
 
   return (
     <ul>
       <Flex direction='column'>
-        {info.map(item => {
+        {tenderInfo.map(tender => {
           return (
-            <TenderItem key={item.uri} item={item} />
+            <TenderItem 
+              key={tender.actualReleases[0].ocid} 
+              item={tender} 
+            />
           )
         })}
       </Flex>

@@ -3,17 +3,22 @@ import Flex from 'ustudio-ui/components/Flex';
 import Text from 'ustudio-ui/components/Text';
 
 import { getTenders } from './config';
+
 import { TendersList } from './components/TendersList';
 
 export const App = () => {
   const [tenders, setTenders] = useState([]);
 
   useEffect(() => {
-    (async function loadTenders() {
-      const { data } = await getTenders();
-
-      setTenders(data);
-    })()
+    try {
+      (async function loadTenders () {
+        const { data } = await getTenders();
+  
+        setTenders(data);
+      })()
+    } catch {
+      console.log("Can't fetch tenders")
+    }    
   }, []);
 
   return (

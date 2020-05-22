@@ -1,12 +1,14 @@
 import React from 'react';
+
 import Flex from 'ustudio-ui/components/Flex';
 import Text from 'ustudio-ui/components/Text';
+
 import Styled from './TenderItem.styles';
 
 export const TenderItem = ({ item }) => {
   const { tender } = item.records[0].compiledRelease;
-  const { title, description } = tender;
-  const budgetAmount = `${tender.value?.amount} ${tender.value?.currency}` || 'Budget is not defined';
+  const { title, description } = item.records[0].compiledRelease.tender;
+  const budgetAmount = `${tender.value?.amount} ${tender.value?.currency}`;
 
   const period = item.records[0].compiledRelease.planning?.budget.budgetBreakdown[0].period;
   const startDate = period?.startDate;
@@ -28,7 +30,7 @@ export const TenderItem = ({ item }) => {
 
           <Styled.Block>
             <Text>
-              Budget: {budgetAmount}
+              Budget: {budgetAmount} 
             </Text>
             <Text>
               Start Date: {
