@@ -6,10 +6,12 @@ import { App } from './App';
 
 
 ReactDOM.render(
-  <ThemeProvider>
-    <HashRouter>
-      <App />
-    </HashRouter>    
-  </ThemeProvider>,
+  <React.StrictMode>
+    <ThemeProvider>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </ThemeProvider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
