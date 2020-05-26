@@ -11,7 +11,7 @@ export const App = () => {
 
   useEffect(() => {
     try {
-      (async function loadTenders () {
+      (async () => {
         setLoading(true);
         const { data } = await getTenders();
   
