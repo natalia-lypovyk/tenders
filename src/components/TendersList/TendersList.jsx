@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Flex from 'ustudio-ui/components/Flex';
 
-import { baseUrl, getTender } from '../../config';
+import { baseUrl, getTenders } from '../../config';
 
 import { TenderItem } from '../TenderItem';
 
@@ -15,7 +15,7 @@ export const TendersList = ({ tenders }) => {
 
     async function loadData () {
       for (const path of loadPath()) {
-        const tenderInfo = await getTender(path);
+        const tenderInfo = await getTenders(path);
         setTenderInfo((prev) => [...prev, tenderInfo]);
       }      
     }

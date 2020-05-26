@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Grid from 'ustudio-ui/components/Grid/Grid';
 import Flex from 'ustudio-ui/components/Flex';
 import Cell from 'ustudio-ui/components/Grid/Cell';
@@ -7,7 +7,7 @@ import Text from 'ustudio-ui/components/Text';
 import Spinner from 'ustudio-ui/components/Spinner';
 import Button from 'ustudio-ui/components/Button';
 
-import { baseUrl, getTender } from '../../config';
+import { baseUrl, getTenders } from '../../config';
 
 import Styled from './TenderPage.styles';
 
@@ -24,7 +24,7 @@ export const TenderPage = () => {
     try {
       (async () => {
         setLoading(true);
-        const data = await getTender(tenderPath);
+        const data = await getTenders(tenderPath);
 
         setTenderItemInfo(data);
         setLoading(false);

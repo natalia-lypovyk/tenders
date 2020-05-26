@@ -1,12 +1,6 @@
 export const baseUrl = 'https://public.mtender.gov.md/tenders';
 
-export const getTenders = async () => {
-  const response = await fetch(baseUrl);
-
-  return response.json();
-};
-
-export const getTender = async (query) => {
+export const getTenders = async (query) => {
   const response = await fetch(query);
 
   return response.json();

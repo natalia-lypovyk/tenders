@@ -3,7 +3,7 @@ import Flex from 'ustudio-ui/components/Flex';
 import Text from 'ustudio-ui/components/Text';
 import Spinner from 'ustudio-ui/components/Spinner';
 
-import { getTenders } from '../../config';
+import { getTenders, baseUrl } from '../../config';
 
 import { TendersList } from '../TendersList';
 
@@ -15,7 +15,7 @@ export const Main = () => {
     try {
       (async () => {
         setLoading(true);
-        const { data } = await getTenders();
+        const { data } = await getTenders(baseUrl);
   
         setTenders(data);
         setLoading(false);
