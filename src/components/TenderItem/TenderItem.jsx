@@ -7,12 +7,13 @@ import Styled from './TenderItem.styles';
 
 export const TenderItem = ({ item }) => {
   const { publishedDate } = item;
-  const { ocid } = item.records[0];
-  const { tender } = item.records[0].compiledRelease;
-  const { title, description } = item.records[0].compiledRelease.tender;
-  const budgetAmount = `${tender.value?.amount} ${tender.value?.currency}` ?? 'No budget defined';
 
-  const source = item.records[0].compiledRelease.planning?.budget.budgetBreakdown[0].sourceParty.name;
+  const records = item.records[0];
+  const { ocid } = records;
+  const { tender } = records.compiledRelease;
+  const { title, description } = records.compiledRelease.tender;
+  const budgetAmount = `${tender.value?.amount} ${tender.value?.currency}` ?? 'No budget defined';
+  const source = records.compiledRelease.planning?.budget.budgetBreakdown[0].sourceParty.name;
 
   return (
     <li>
