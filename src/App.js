@@ -8,13 +8,16 @@ import { TenderItemPage } from './components/TenderItemPage'
 
 export const App = () => {
   const [tenders, setTenders] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     try {
       (async function loadTenders () {
+        setIsLoading(true);
         const { data } = await getTenders();
   
         setTenders(data);
+        setIsLoading(false);
       })()
     } catch {
       console.log("Can't fetch tenders")
@@ -25,7 +28,7 @@ export const App = () => {
   return (
     <Switch>
       <Route path="/" exact>
-        <Main tenders={tenders} />
+        <Main tenders={tenders} isLoading={isLoading} />
       </Route>  
       <Route path="/tenders/:id?">
         <TenderItemPage />

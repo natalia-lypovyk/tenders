@@ -9,10 +9,10 @@ const Card = styled.div`
   border: 2px solid #a5d5ff;
   border-radius: 10px;
   
-  transition: box-shadow 0.4s linear;
+  transition: box-shadow 0.3s linear;
 
   &:hover {
-    box-shadow: var(--neumo-shadow);
+    box-shadow: 3px 3px 5px 3px rgba(64,113,140,0.52);
   }
 `;
 
