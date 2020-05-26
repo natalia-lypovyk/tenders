@@ -19,15 +19,13 @@ export const TenderPage = () => {
 
   useEffect(() => {
     try {
-      async function loadTender() {
+      (async () => {
         setLoading(true);
         const data = await getTender(tenderPath);
 
         setTenderItemInfo(data);
         setLoading(false);
-      };
-
-      loadTender();
+      })()
     } catch {
       console.log('error')
     }
@@ -53,6 +51,21 @@ export const TenderPage = () => {
   const endDate = period?.endDate;
 
   const publishedDate = tenderItemInfo?.publishedDate;
+
+  const titles = [
+    ['Tender ID:', tenderId],
+    ['Budget:', budgetAmount],
+    ['Date of Publication:', publishedDate],
+    ['Start Date:', startDate],
+    ['End Date:', endDate]
+  ];
+
+  const contacts = [
+    ['Address:', [streetAddress, postalCode]],
+    ['Name:', contactName],
+    ['Email:', contactEmail],
+    ['Phone:', contactPhone]
+  ];
 
   return (
     <>
@@ -108,47 +121,28 @@ export const TenderPage = () => {
                     bottom: 'medium'
                   }}
                   >
-                    <Flex>
-                      <Styled.ColoredText>Tender ID:</Styled.ColoredText>
-                      <Styled.Content>{tenderId}</Styled.Content>
-                    </Flex>
-                    <Flex>
-                      <Styled.ColoredText>Budget:</Styled.ColoredText>
-                      <Styled.Content>{budgetAmount}</Styled.Content>
-                    </Flex>
-                    <Flex>
-                      <Styled.ColoredText>Date of Publication:</Styled.ColoredText>
-                      <Styled.Content>{publishedDate}</Styled.Content>
-                    </Flex>
-                    <Flex>
-                      <Styled.ColoredText>Start Date:</Styled.ColoredText>
-                      <Styled.Content>{startDate}</Styled.Content>
-                    </Flex>
-                    <Flex>
-                      <Styled.ColoredText>End Date:</Styled.ColoredText>
-                      <Styled.Content>{endDate}</Styled.Content>
-                    </Flex>
+                    {titles.map(title => {
+                      return (
+                        <Flex>
+                          <Styled.ColoredText>{title[0]}</Styled.ColoredText>
+                          <Styled.Content>{title[1]}</Styled.Content>
+                        </Flex>
+                      )
+                    })}
                   </Flex>
                 </Cell>
+
                 <Cell>
                   <Flex direction='column'>
                     <Styled.ContactsTitle>Contacts</Styled.ContactsTitle>
-                    <Flex>
-                      <Styled.ColoredText>Address:</Styled.ColoredText>
-                      <Text>{streetAddress}, {postalCode}</Text>
-                    </Flex>
-                    <Flex>
-                      <Styled.ColoredText>Name:</Styled.ColoredText>
-                      <Text>{contactName}</Text>
-                    </Flex>
-                    <Flex>
-                      <Styled.ColoredText>Email:</Styled.ColoredText>
-                      <Text>{contactEmail}</Text>
-                    </Flex>
-                    <Flex>
-                      <Styled.ColoredText>Phone:</Styled.ColoredText>
-                      <Text>{contactPhone}</Text>
-                    </Flex>
+                    {contacts.map(contact => {
+                      return (
+                        <Flex>
+                          <Styled.ColoredText>{contact[0]}</Styled.ColoredText>
+                          <Text>{contact[1]}</Text>
+                        </Flex>
+                      )
+                    })}                    
                   </Flex>
                 </Cell>
               </Grid>
