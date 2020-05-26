@@ -10,17 +10,11 @@ export const TendersList = ({ tenders }) => {
 
   useEffect(() => {
     const loadPath = () => {
-      const list = tenders.map(item => {        
-        return `${baseUrl}/${item.ocid}`;
-      });
-
-      return list;
+      return tenders.map(item => `${baseUrl}/${item.ocid}`);
     }
 
-    const paths = loadPath();
-
     async function loadData () {
-      for (const path of paths) {
+      for (const path of loadPath()) {
         const tenderInfo = await getTender(path);
         setTenderInfo((prev) => [...prev, tenderInfo]);
       }      

@@ -5,11 +5,11 @@ const Wrapper = styled.div`
   width: 70%;
   margin: 50px auto;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 992px) {
     width: 80%;
   }
 
-  @media(max-width: var(--bp-md)) {
+  @media(max-width: 768px) {
     width: 90%;
   }
 `;

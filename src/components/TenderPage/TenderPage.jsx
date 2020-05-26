@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import Grid from 'ustudio-ui/components/Grid/Grid';
 import Flex from 'ustudio-ui/components/Flex';
 import Cell from 'ustudio-ui/components/Grid/Cell';
 import Text from 'ustudio-ui/components/Text';
 import Spinner from 'ustudio-ui/components/Spinner';
+import Button from 'ustudio-ui/components/Button';
 
 import { baseUrl, getTender } from '../../config';
 
@@ -13,6 +14,8 @@ import Styled from './TenderPage.styles';
 export const TenderPage = () => {
   const [tenderItemInfo, setTenderItemInfo] = useState([]);
   const [isLoading, setLoading] = useState(false);
+
+  const { goBack } = useHistory();
 
   const { id } = useParams();
   const tenderPath = `${baseUrl}/${id}`;
@@ -156,7 +159,12 @@ export const TenderPage = () => {
                 top: 'large'
               }}
             >
-              <Link to="/">Go back to all tenders</Link>
+              <Button 
+                appearance='outlined' 
+                onClick={() => goBack()}
+              >
+                Go back to all tenders
+              </Button>
             </Flex>
           </Styled.Wrapper>
         )
