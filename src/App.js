@@ -19,19 +19,19 @@ export const App = () => {
         setLoading(false);
       })()
     } catch {
-      console.log("Can't fetch tenders")
+      console.log('Can&apos;t fetch tenders')
     }    
     
   }, []);
 
   return (
     <Switch>
-      <Route path="/" exact>
+      <Route path='/' exact>
         <Main tenders={tenders} isLoading={isLoading} />
       </Route>  
-      <Route path="/tenders/:id?">
+      <Route path='/tenders/:id?'>
         <TenderItemPage />
-      </Route> */}    
+      </Route> 
     </Switch>
   );
 };

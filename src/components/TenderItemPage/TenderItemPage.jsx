@@ -59,8 +59,8 @@ export const TenderItemPage = () => {
       {(isLoading) ? (
         <Flex
           alignment={{
-            horizontal: "center",
-            vertical: "center"
+            horizontal: 'center',
+            vertical: 'center'
           }}
           margin={{
             top: 'large'
@@ -77,15 +77,15 @@ export const TenderItemPage = () => {
           <Styled.Wrapper>
             <Flex
               alignment={{
-                horizontal: "center"
+                horizontal: 'center'
               }}
               margin={{
-                bottom: "medium"
+                bottom: 'medium'
               }}
             >
               <Text
-                variant="h2"
-                color="var(--c-primary)"
+                variant='h2'
+                color='var(--c-primary)'
               >
                 Title: {title}
               </Text>
@@ -93,17 +93,17 @@ export const TenderItemPage = () => {
 
             <Flex
               margin={{
-                bottom: "medium"
+                bottom: 'medium'
               }}
             >
-              <Styled.ColoredText variant="h4">Description:</Styled.ColoredText>
+              <Styled.ColoredText variant='h4'>Description:</Styled.ColoredText>
               <Styled.Description>{description}</Styled.Description>
             </Flex>
 
             <Flex>
               <Grid>
                 <Cell>
-                  <Flex direction="column" margin={{
+                  <Flex direction='column' margin={{
                     top: 'medium',
                     bottom: 'medium'
                   }}
@@ -131,7 +131,7 @@ export const TenderItemPage = () => {
                   </Flex>
                 </Cell>
                 <Cell>
-                  <Flex direction="column">
+                  <Flex direction='column'>
                     <Styled.ContactsTitle>Contacts</Styled.ContactsTitle>
                     <Flex>
                       <Styled.ColoredText>Address:</Styled.ColoredText>
