@@ -7,24 +7,25 @@ import { getTenders, baseUrl } from '../../config';
 
 import { TendersList } from '../TendersList';
 
-export const Main = () => { 
+export const Main = () => {
   const [tenders, setTenders] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     try {
       (async () => {
         setLoading(true);
         const { data } = await getTenders(baseUrl);
-  
+
         setTenders(data);
         setLoading(false);
       })()
-    } catch {
-      console.log('Can&apos;t fetch tenders')
-    }    
-    
-  }, []); 
+    } catch (e) {
+      setError(e)
+    }
+
+  }, []);
 
   return (
     <Flex
@@ -36,23 +37,22 @@ export const Main = () => {
     >
       <Text color="var(--c-primary)" variant="h1">Tenders</Text>
 
-      {
-        (isLoading) ? (
-          <Spinner 
-            appearance={{
-              color: 'var(--c-primary-light)',
-              size: 40
-            }}
-          />
-          ) : (
-          (tenders.length) ? (
-            <TendersList tenders={tenders} />
-          ) : (
-              <Text>No tenders here yet</Text>
-            )
-        )
-        
-      }
+      {isLoading && !error && (
+        <Spinner
+          appearance={{
+            color: 'var(--c-primary-light)',
+            size: 40
+          }}
+        />
+      )}
+
+      {!isLoading && !error && (
+        <TendersList tenders={tenders} />
+      )}
+
+      {!isLoading && error && (
+        <Text>{error}</Text>
+      )}
     </Flex>
   )
 };
