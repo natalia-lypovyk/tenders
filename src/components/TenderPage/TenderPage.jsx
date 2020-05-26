@@ -8,9 +8,9 @@ import Spinner from 'ustudio-ui/components/Spinner';
 
 import { baseUrl, getTender } from '../../config';
 
-import Styled from './TenderItemPage.styles';
+import Styled from './TenderPage.styles';
 
-export const TenderItemPage = () => {
+export const TenderPage = () => {
   const [tenderItemInfo, setTenderItemInfo] = useState([]);
   const [isLoading, setLoading] = useState(false);
 

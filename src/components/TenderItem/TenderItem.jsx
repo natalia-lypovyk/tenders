@@ -12,7 +12,7 @@ export const TenderItem = ({ item }) => {
   const { ocid } = records;
   const { tender } = records.compiledRelease;
   const { title, description } = records.compiledRelease.tender;
-  const budgetAmount = `${tender.value?.amount} ${tender.value?.currency}` ?? 'No budget defined';
+  const budgetAmount = `${tender.value?.amount} ${tender.value?.currency}`;
   const source = records.compiledRelease.planning?.budget.budgetBreakdown[0].sourceParty.name;
 
   return (
@@ -33,6 +33,7 @@ export const TenderItem = ({ item }) => {
             <Text>
               Budget: {budgetAmount} 
             </Text>
+            
             <Text>Date of Publication: {publishedDate}</Text>
           </Styled.Block>
         </Flex>

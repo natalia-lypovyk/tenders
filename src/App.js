@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { Main, TenderItemPage } from './components';
+import { Main, TenderPage } from './components';
 
 export const App = () => {
   return (
@@ -10,7 +10,7 @@ export const App = () => {
         <Main />
       </Route>  
       <Route path='/tenders/:id?'>
-        <TenderItemPage />
+        <TenderPage />
       </Route> 
     </Switch>
   );
