@@ -12,7 +12,7 @@ import Styled from './TenderItemPage.styles';
 
 export const TenderItemPage = () => {
   const [tenderItemInfo, setTenderItemInfo] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const { id } = useParams();
   const tenderPath = `${baseUrl}/${id}`;
@@ -20,11 +20,11 @@ export const TenderItemPage = () => {
   useEffect(() => {
     try {
       async function loadTender() {
-        setIsLoading(true);
+        setLoading(true);
         const data = await getTender(tenderPath);
 
         setTenderItemInfo(data);
-        setIsLoading(false);
+        setLoading(false);
       };
 
       loadTender();

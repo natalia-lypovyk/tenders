@@ -7,16 +7,16 @@ import { Main, TenderItemPage } from './components';
 
 export const App = () => {
   const [tenders, setTenders] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     try {
       (async function loadTenders () {
-        setIsLoading(true);
+        setLoading(true);
         const { data } = await getTenders();
   
         setTenders(data);
-        setIsLoading(false);
+        setLoading(false);
       })()
     } catch {
       console.log("Can't fetch tenders")
