@@ -13,18 +13,19 @@ export const Main = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    try {
-      (async () => {
+    (async () => {
+      try {
         setLoading(true);
+        
         const { data } = await getTenders(baseUrl);
 
         setTenders(data);
+      } catch (e) {
+        setError(e);
+      } finally {
         setLoading(false);
-      })()
-    } catch (e) {
-      setError(e)
-    }
-
+      }
+    })()
   }, []);
 
   return (
