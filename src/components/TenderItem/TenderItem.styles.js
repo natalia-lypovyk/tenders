@@ -12,13 +12,14 @@ const Card = styled.div`
   transition: box-shadow 0.4s linear;
 
   &:hover {
-    box-shadow: 5px 5px 7px 3px var(--c-neutral);
+    box-shadow: var(--neumo-shadow);
   }
 `;
 
 const Title = styled(Text)`
   color: var(--c-primary);
   margin-bottom: 10px;
+  
 `;
 
 const CardText = styled(Text)`

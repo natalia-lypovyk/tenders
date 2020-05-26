@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Flex from 'ustudio-ui/components/Flex';
-import Text from 'ustudio-ui/components/Text';
+import { Switch, Route } from 'react-router-dom';
 
 import { getTenders } from './config';
 
-import { TendersList } from './components/TendersList';
+import { Main } from './components/Main';
+import { TenderItemPage } from './components/TenderItemPage'
 
 export const App = () => {
   const [tenders, setTenders] = useState([]);
@@ -19,25 +19,22 @@ export const App = () => {
     } catch {
       console.log("Can't fetch tenders")
     }    
+    
   }, []);
 
   return (
-    <Flex
-      alignment={{
-        horizontal: 'center',
-        vertical: 'center',
-      }}
-      direction="column"
-    >
-      <Text color="var(--c-primary)" variant="h1">Tenders</Text>
-
-      {
-        (tenders.length) ? (
-          <TendersList tenders={tenders} />
-        ) : (
-            <Text>No tenders here yet</Text>
-          )
-      }
-    </Flex>
+    <Switch>
+      <Route path="/" exact>
+        <Main tenders={tenders} />
+      </Route>  
+      <Route path="/tenders/:id?">
+        <TenderItemPage />
+      </Route> */}    
+    </Switch>
   );
 };
+
+// eslint-disable-next-line no-lone-blocks
+{/* <Route path="/tender/:tenderId">
+        <TenderPage />
+      </Route> */}

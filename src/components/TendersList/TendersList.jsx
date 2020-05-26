@@ -27,8 +27,9 @@ export const TendersList = ({ tenders }) => {
     }
     
     loadData();
+    
   }, []);
-
+  
   return (
     <ul>
       <Flex direction='column'>
