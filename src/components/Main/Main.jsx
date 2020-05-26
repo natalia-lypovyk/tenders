@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Flex from 'ustudio-ui/components/Flex';
 import Text from 'ustudio-ui/components/Text';
 import Spinner from 'ustudio-ui/components/Spinner';
 
+import { getTenders } from '../../config';
+
 import { TendersList } from '../TendersList';
 
-export const Main = ({ tenders, isLoading }) => {  
+export const Main = () => { 
+  const [tenders, setTenders] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    try {
+      (async () => {
+        setLoading(true);
+        const { data } = await getTenders();
+  
+        setTenders(data);
+        setLoading(false);
+      })()
+    } catch {
+      console.log('Can&apos;t fetch tenders')
+    }    
+    
+  }, []); 
+
   return (
     <Flex
       alignment={{
