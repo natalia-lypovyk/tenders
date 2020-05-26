@@ -18,8 +18,7 @@ const Card = styled.div`
 
 const Title = styled(Text)`
   color: var(--c-primary);
-  margin-bottom: 10px;
-  
+  margin-bottom: 10px;  
 `;
 
 const CardText = styled(Text)`

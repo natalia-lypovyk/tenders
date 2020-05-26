@@ -3,8 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import { getTenders } from './config';
 
-import { Main } from './components/Main';
-import { TenderItemPage } from './components/TenderItemPage'
+import { Main, TenderItemPage } from './components';
 
 export const App = () => {
   const [tenders, setTenders] = useState([]);
@@ -36,8 +35,3 @@ export const App = () => {
     </Switch>
   );
 };
-
-// eslint-disable-next-line no-lone-blocks
-{/* <Route path="/tender/:tenderId">
-        <TenderPage />
-      </Route> */}

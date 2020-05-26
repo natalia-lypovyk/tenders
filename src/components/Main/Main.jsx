@@ -5,9 +5,7 @@ import Spinner from 'ustudio-ui/components/Spinner';
 
 import { TendersList } from '../TendersList';
 
-export const Main = ({ tenders, isLoading }) => {
-  
-  
+export const Main = ({ tenders, isLoading }) => {  
   return (
     <Flex
       alignment={{
