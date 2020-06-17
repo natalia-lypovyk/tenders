@@ -1,9 +1,17 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+
+import { Main, TenderPage } from './components';
 
 export const App = () => {
   return (
-    <div className="App">
-      <h1>Tenders</h1>
-    </div>
+    <Switch>
+      <Route path='/' exact>
+        <Main />
+      </Route>  
+      <Route path='/tenders/:id?'>
+        <TenderPage />
+      </Route> 
+    </Switch>
   );
-}
+};
